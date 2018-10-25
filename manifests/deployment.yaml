@@ -1,0 +1,34 @@
+apiVersion: apps/v1beta2
+  kind: Deployment
+  metadata:
+    labels:
+      app: hello-human
+    name: hello-human
+    namespace: default
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: hello-human
+    template:
+      metadata:
+        labels:
+          app: hello-human
+      spec:
+        containers:
+          - image: index.docker.io/EricLi0410/hellohuman
+            imagePullPolicy: Always
+            name: hello-human
+        resources:
+            limits:
+              cpu: 500m
+              memory: 250Mi
+            requests:
+              cpu: 250m
+              memory: 100Mi
+            ports:
+              - containerPort: 8000
+            readinessProbe:
+              httpGet:
+                path: /
+                port: 8000
