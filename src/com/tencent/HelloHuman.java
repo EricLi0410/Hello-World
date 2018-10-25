@@ -1,4 +1,4 @@
-package tencent.com;
+package com.tencent;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
